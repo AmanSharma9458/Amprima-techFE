@@ -1,6 +1,7 @@
 // src/components/WhatsAppButton.tsx
 
 import { MessageCircle } from 'lucide-react';
+import clsx from "clsx";
 
 interface WhatsAppButtonProps {
   variant?: 'floating' | 'primary' | 'secondary';
@@ -9,14 +10,12 @@ interface WhatsAppButtonProps {
 }
 
 const WhatsAppButton = ({ variant = 'floating', text, className = '' }: WhatsAppButtonProps) => {
-  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '919675859742';
-  const message = encodeURIComponent('Hi! I would like to discuss a project with Amprima Tech.');
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+  const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/J6bIn10JjLjGmv4GevqCGG";
 
   if (variant === 'floating') {
     return (
       <a
-        href={whatsappUrl}
+        href={WHATSAPP_GROUP_LINK}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all animate-bounce"
@@ -30,20 +29,24 @@ const WhatsAppButton = ({ variant = 'floating', text, className = '' }: WhatsApp
   if (variant === 'primary') {
     return (
       <a
-        href={whatsappUrl}
+        href={WHATSAPP_GROUP_LINK}
         target="_blank"
         rel="noopener noreferrer"
-        className={`flex items-center justify-center space-x-2 px-6 py-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all transform hover:scale-105 shadow-md font-semibold ${className}`}
+        className={clsx(
+          "flex items-center justify-center gap-2 bg-green-500 text-white font-semibold rounded-xl px-6 py-3 shadow-md hover:bg-green-600 transition-all duration-200 text-lg",
+          className,
+          variant === "primary" && "w-full"
+        )}
       >
         <MessageCircle className="w-5 h-5" />
-        <span>{text || 'Chat on WhatsApp'}</span>
+        <span>Chat on WhatsApp</span>
       </a>
     );
   }
 
   return (
     <a
-      href={whatsappUrl}
+      href={WHATSAPP_GROUP_LINK}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center space-x-2 px-6 py-3 border-2 border-green-500 text-green-600 rounded-lg hover:bg-green-50 transition-colors font-semibold ${className}`}
