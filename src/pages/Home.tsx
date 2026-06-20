@@ -1,7 +1,6 @@
 // src/pages/Home.tsx
 
 import { Helmet } from 'react-helmet-async';
-import Hero from '../components/Hero';
 import ServicesSection from '../components/ServicesSection';
 import WhyChooseUs from '../components/WhyChooseUs';
 import ProcessSection from '../components/ProcessSection';
