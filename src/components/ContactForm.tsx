@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Send, Loader } from 'lucide-react';
 import { submitLead } from '../api';
 import type { LeadFormData } from '../types';
+import { serviceTitles } from '../data/services';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -140,9 +141,9 @@ const ContactForm = () => {
           className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:ring-0 transition-colors"
         >
           <option value="">Select a service</option>
-          <option value="Website Development">Website Development</option>
-          <option value="Android App Development">Android App Development</option>
-          <option value="iOS App Development">iOS App Development</option>
+          {serviceTitles.map((title) => (
+            <option key={title} value={title}>{title}</option>
+          ))}
           <option value="Multiple Services">Multiple Services</option>
           <option value="Not Sure">Not Sure - Need Consultation</option>
         </select>

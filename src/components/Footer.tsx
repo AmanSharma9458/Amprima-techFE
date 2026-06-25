@@ -2,6 +2,8 @@
 
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import Logo from './Logo';
+import { serviceTitles } from '../data/services';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,15 +14,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
-              <div>
-                <span className="text-xl font-bold text-white">Amprima</span>
-                <span className="text-xl font-light text-gray-400"> Tech</span>
-              </div>
-            </Link>
+            <Logo variant="dark" className="mb-4" />
             <p className="text-sm text-gray-400 mb-4">
               Transforming businesses with cutting-edge digital solutions. Your trusted partner for web and mobile development.
             </p>
@@ -91,18 +85,13 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Our Services</h3>
             <ul className="space-y-2">
-              <li className="text-sm hover:text-blue-400 transition-colors cursor-pointer">
-                Website Development
-              </li>
-              <li className="text-sm hover:text-blue-400 transition-colors cursor-pointer">
-                Android App Development
-              </li>
-              <li className="text-sm hover:text-blue-400 transition-colors cursor-pointer">
-                iOS App Development
-              </li>
-              <li className="text-sm hover:text-blue-400 transition-colors cursor-pointer">
-                Custom Software Solutions
-              </li>
+              {serviceTitles.map((title) => (
+                <li key={title}>
+                  <Link to="/services" className="text-sm hover:text-blue-400 transition-colors">
+                    {title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

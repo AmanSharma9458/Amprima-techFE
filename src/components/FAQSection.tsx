@@ -10,7 +10,7 @@ const FAQSection = () => {
     {
       question: 'What services does Amprima Tech offer?',
       answer:
-        'We specialize in website development, Android app development, iOS app development, and custom software solutions. From simple landing pages to complex enterprise applications, we handle projects of all sizes and complexities.',
+        'We offer a full range of digital and IT services including websites & web apps, Android, iOS, and Windows app development, API integrations, data engineering & analytics, UI/UX design, AI agents workflow, IT consulting & strategy, managed IT services, and marketing & PR.',
     },
     {
       question: 'How long does it take to complete a project?',

@@ -1,75 +1,26 @@
 // src/components/ServicesSection.tsx
 
-import { Monitor, Smartphone, TabletSmartphone, Code2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { services } from '../data/services';
+
+const colorMap: Record<string, { bg: string; text: string; border: string; hover: string }> = {
+  blue: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-200', hover: 'hover:border-blue-400' },
+  green: { bg: 'bg-green-50', text: 'text-green-600', border: 'border-green-200', hover: 'hover:border-green-400' },
+  purple: { bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-200', hover: 'hover:border-purple-400' },
+  indigo: { bg: 'bg-indigo-50', text: 'text-indigo-600', border: 'border-indigo-200', hover: 'hover:border-indigo-400' },
+  cyan: { bg: 'bg-cyan-50', text: 'text-cyan-600', border: 'border-cyan-200', hover: 'hover:border-cyan-400' },
+  teal: { bg: 'bg-teal-50', text: 'text-teal-600', border: 'border-teal-200', hover: 'hover:border-teal-400' },
+  pink: { bg: 'bg-pink-50', text: 'text-pink-600', border: 'border-pink-200', hover: 'hover:border-pink-400' },
+  violet: { bg: 'bg-violet-50', text: 'text-violet-600', border: 'border-violet-200', hover: 'hover:border-violet-400' },
+  slate: { bg: 'bg-slate-50', text: 'text-slate-600', border: 'border-slate-200', hover: 'hover:border-slate-400' },
+  amber: { bg: 'bg-amber-50', text: 'text-amber-600', border: 'border-amber-200', hover: 'hover:border-amber-400' },
+  rose: { bg: 'bg-rose-50', text: 'text-rose-600', border: 'border-rose-200', hover: 'hover:border-rose-400' },
+};
 
 const ServicesSection = () => {
-  const services = [
-    {
-      icon: Monitor,
-      title: 'Website Development',
-      description:
-        'Custom, responsive websites built with modern technologies. From landing pages to complex web applications, we bring your vision to life.',
-      features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Secure & Scalable'],
-      color: 'blue',
-    },
-    {
-      icon: Smartphone,
-      title: 'Android App Development',
-      description:
-        'Native Android applications that deliver exceptional user experiences. Built with Kotlin and Java for optimal performance.',
-      features: ['Material Design', 'Play Store Ready', 'Push Notifications', 'Offline Support'],
-      color: 'green',
-    },
-    {
-      icon: TabletSmartphone,
-      title: 'iOS App Development',
-      description:
-        'Elegant iOS applications following Apple guidelines. Swift-powered apps that users love on iPhone and iPad.',
-      features: ['SwiftUI', 'App Store Optimized', 'iCloud Integration', 'Apple Pay Support'],
-      color: 'purple',
-    },
-    {
-      icon: Code2,
-      title: 'Custom Software Solutions',
-      description:
-        'Tailored software solutions for your unique business needs. From automation to enterprise systems, we build it all.',
-      features: ['API Development', 'Database Design', 'Cloud Solutions', 'Third-party Integration'],
-      color: 'orange',
-    },
-  ];
-
-  const colorMap: Record<string, { bg: string; text: string; border: string; hover: string }> = {
-    blue: {
-      bg: 'bg-blue-50',
-      text: 'text-blue-600',
-      border: 'border-blue-200',
-      hover: 'hover:border-blue-400',
-    },
-    green: {
-      bg: 'bg-green-50',
-      text: 'text-green-600',
-      border: 'border-green-200',
-      hover: 'hover:border-green-400',
-    },
-    purple: {
-      bg: 'bg-purple-50',
-      text: 'text-purple-600',
-      border: 'border-purple-200',
-      hover: 'hover:border-purple-400',
-    },
-    orange: {
-      bg: 'bg-orange-50',
-      text: 'text-orange-600',
-      border: 'border-orange-200',
-      hover: 'hover:border-orange-400',
-    },
-  };
-
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Our Services
@@ -80,8 +31,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => {
             const colors = colorMap[service.color];
             const Icon = service.icon;
@@ -89,17 +39,17 @@ const ServicesSection = () => {
             return (
               <div
                 key={index}
-                className={`p-8 rounded-2xl border-2 ${colors.border} ${colors.hover} transition-all hover:shadow-xl transform hover:-translate-y-1 bg-white`}
+                className={`p-6 rounded-2xl border-2 ${colors.border} ${colors.hover} transition-all hover:shadow-xl transform hover:-translate-y-1 bg-white`}
               >
-                <div className={`w-16 h-16 ${colors.bg} rounded-xl flex items-center justify-center mb-6`}>
-                  <Icon className={`w-8 h-8 ${colors.text}`} />
+                <div className={`w-14 h-14 ${colors.bg} rounded-xl flex items-center justify-center mb-4`}>
+                  <Icon className={`w-7 h-7 ${colors.text}`} />
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{service.description}</p>
 
-                <div className="space-y-2">
-                  {service.features.map((feature, idx) => (
+                <div className="space-y-1.5">
+                  {service.features.slice(0, 4).map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <div className={`w-1.5 h-1.5 rounded-full ${colors.bg}`}></div>
                       <span className="text-sm text-gray-700">{feature}</span>
@@ -111,7 +61,6 @@ const ServicesSection = () => {
           })}
         </div>
 
-        {/* CTA */}
         <div className="text-center">
           <Link
             to="/services"
