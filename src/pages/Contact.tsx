@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
 import WhatsAppButton from '../components/WhatsAppButton';
+import { contactInfo } from '../data/contact';
 
 const Contact = () => {
   return (
@@ -44,12 +45,17 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Phone</h3>
-                  <a
-                    href="tel:+919675859742"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    +91 96758 59742
-                  </a>
+                  <div className="space-y-2">
+                    {contactInfo.phones.map((phone) => (
+                      <a
+                        key={phone.tel}
+                        href={`tel:${phone.tel}`}
+                        className="block text-gray-600 hover:text-blue-600 transition-colors"
+                      >
+                        {phone.display}
+                      </a>
+                    ))}
+                  </div>
                   <p className="text-sm text-gray-500 mt-2">Mon-Sat, 9 AM - 7 PM IST</p>
                 </div>
 
@@ -59,10 +65,10 @@ const Contact = () => {
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Email</h3>
                   <a
-                    href="mailto:sayyedaqib8408@gmail.com"
+                    href={`mailto:${contactInfo.email}`}
                     className="text-gray-600 hover:text-purple-600 transition-colors break-all"
                   >
-                    sayyedaqib8408@gmail.com
+                    {contactInfo.email}
                   </a>
                   <p className="text-sm text-gray-500 mt-2">We'll respond within 24 hours</p>
                 </div>
@@ -73,9 +79,9 @@ const Contact = () => {
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">Location</h3>
                   <p className="text-gray-600">
-                    Salem, Tamil Nadu
+                    {contactInfo.location.line1}
                     <br />
-                    India
+                    {contactInfo.location.line2}
                   </p>
                 </div>
 
@@ -83,9 +89,9 @@ const Contact = () => {
                   <Clock className="w-8 h-8 mb-4 opacity-90" />
                   <h3 className="text-lg font-bold mb-2">Business Hours</h3>
                   <div className="space-y-2 text-blue-100">
-                    <p>Monday - Friday: 9 AM - 7 PM</p>
-                    <p>Saturday: 10 AM - 5 PM</p>
-                    <p>Sunday: Closed</p>
+                    <p>{contactInfo.businessHours.weekdays}</p>
+                    <p>{contactInfo.businessHours.saturday}</p>
+                    <p>{contactInfo.businessHours.sunday}</p>
                   </div>
                 </div>
 

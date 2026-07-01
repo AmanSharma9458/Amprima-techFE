@@ -27,15 +27,6 @@ const TestimonialsSection = () => {
     },
   ];
 
-  const clients = [
-    { name: 'TechStart', logo: 'TS' },
-    { name: 'StyleHub', logo: 'SH' },
-    { name: 'FinServe', logo: 'FS' },
-    { name: 'EduTech', logo: 'ET' },
-    { name: 'HealthPlus', logo: 'HP' },
-    { name: 'RetailPro', logo: 'RP' },
-  ];
-
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,23 +77,6 @@ const TestimonialsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Trusted By Section */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">Trusted By</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {clients.map((client, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
-              >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">{client.logo}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

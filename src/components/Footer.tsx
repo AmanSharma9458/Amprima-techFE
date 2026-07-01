@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Logo from './Logo';
 import { serviceTitles } from '../data/services';
+import { contactInfo } from '../data/contact';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -74,6 +75,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/business-models" className="hover:text-blue-400 transition-colors text-sm">
+                  Business Models
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="hover:text-blue-400 transition-colors text-sm">
                   Contact
                 </Link>
@@ -99,27 +105,29 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold text-lg mb-4">Get In Touch</h3>
             <ul className="space-y-3">
+              {contactInfo.phones.map((phone) => (
+                <li key={phone.tel}>
+                  <a
+                    href={`tel:${phone.tel}`}
+                    className="flex items-start space-x-3 hover:text-blue-400 transition-colors text-sm"
+                  >
+                    <Phone className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <span>{phone.display}</span>
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
-                  href="tel:+919675859742"
-                  className="flex items-start space-x-3 hover:text-blue-400 transition-colors text-sm"
-                >
-                  <Phone className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>+91 96758 59742</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:sayyedaqib8408@gmail.com"
+                  href={`mailto:${contactInfo.email}`}
                   className="flex items-start space-x-3 hover:text-blue-400 transition-colors text-sm"
                 >
                   <Mail className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>sayyedaqib8408@gmail.com</span>
+                  <span>{contactInfo.email}</span>
                 </a>
               </li>
               <li className="flex items-start space-x-3 text-sm">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                <span>Salem, Tamil Nadu, India</span>
+                <span>{contactInfo.location.full}</span>
               </li>
             </ul>
           </div>

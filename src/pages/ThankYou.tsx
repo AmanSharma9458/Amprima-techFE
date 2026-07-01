@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Phone, Mail, Home, Clock } from 'lucide-react';
 import WhatsAppButton from '../components/WhatsAppButton';
+import { contactInfo } from '../data/contact';
 
 const ThankYou = () => {
   return (
@@ -114,28 +115,31 @@ const ThankYou = () => {
             </p>
             
             <div className="grid md:grid-cols-2 gap-4">
-              <a
-                href="tel:+919675859742"
-                className="flex items-center justify-center space-x-3 px-6 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105"
-              >
-                <Phone className="w-5 h-5" />
-                <span className="font-semibold">Call: +91 96758 59742</span>
-              </a>
-              
+              {contactInfo.phones.map((phone) => (
+                <a
+                  key={phone.tel}
+                  href={`tel:${phone.tel}`}
+                  className="flex items-center justify-center space-x-3 px-6 py-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span className="font-semibold">Call: {phone.display}</span>
+                </a>
+              ))}
+
               <WhatsAppButton 
                 variant="primary" 
-                className="w-full"
+                className="w-full md:col-span-2"
                 text="WhatsApp Us"
               />
             </div>
 
             <div className="mt-4">
               <a
-                href="mailto:sayyedaqib8408@gmail.com"
+                href={`mailto:${contactInfo.email}`}
                 className="flex items-center justify-center space-x-3 px-6 py-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                <span className="font-semibold">Email: sayyedaqib8408@gmail.com</span>
+                <span className="font-semibold">Email: {contactInfo.email}</span>
               </a>
             </div>
           </div>

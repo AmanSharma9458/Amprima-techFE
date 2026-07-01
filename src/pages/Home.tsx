@@ -5,6 +5,7 @@ import ServicesSection from '../components/ServicesSection';
 import WhyChooseUs from '../components/WhyChooseUs';
 import ProcessSection from '../components/ProcessSection';
 import TestimonialsSection from '../components/TestimonialsSection';
+import TrustedBySection from '../components/TrustedBySection';
 import FAQSection from '../components/FAQSection';
 import WhatsAppButton from '../components/WhatsAppButton';
 import { Link } from 'react-router-dom';
@@ -70,6 +71,7 @@ const Home = () => {
       <WhyChooseUs />
       <ProcessSection />
       <TestimonialsSection />
+      <TrustedBySection />
       <FAQSection />
       <WhatsAppButton variant="floating" />
     </>

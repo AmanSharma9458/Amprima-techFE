@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
+import { contactInfo } from '../data/contact';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
+    { name: 'Business Models', path: '/business-models' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -67,13 +69,18 @@ const Navbar = () => {
 
           {/* Contact Info & CTA */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a
-              href="tel:+919675859742"
-              className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors"
-            >
-              <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+91 96758 59742</span>
-            </a>
+            <div className="flex flex-col items-end gap-0.5">
+              {contactInfo.phones.map((phone) => (
+                <a
+                  key={phone.tel}
+                  href={`tel:${phone.tel}`}
+                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm font-medium">{phone.display}</span>
+                </a>
+              ))}
+            </div>
             <Link
               to="/contact"
               className="px-6 py-2.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md"
@@ -116,19 +123,22 @@ const Navbar = () => {
             ))}
             
             <div className="pt-3 border-t border-gray-200 space-y-3">
+              {contactInfo.phones.map((phone) => (
+                <a
+                  key={phone.tel}
+                  href={`tel:${phone.tel}`}
+                  className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm font-medium">{phone.display}</span>
+                </a>
+              ))}
               <a
-                href="tel:+919675859742"
-                className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span className="text-sm font-medium">+91 96758 59742</span>
-              </a>
-              <a
-                href="mailto:sayyedaqib8408@gmail.com"
+                href={`mailto:${contactInfo.email}`}
                 className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                <span className="text-sm font-medium">sayyedaqib8408@gmail.com</span>
+                <span className="text-sm font-medium">{contactInfo.email}</span>
               </a>
               <Link
                 to="/contact"
